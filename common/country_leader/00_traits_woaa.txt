@@ -1,0 +1,30 @@
+leader_traits = {
+	
+	first_lady_anime = {
+		random = no
+		stability_factor = 0.15
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	military_adviser_anime = {
+		random = no
+		war_support_factor = 0.15
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	minister_of_economic_anime = {
+		random = no
+		production_speed_buildings_factor = 0.1
+		production_factory_max_efficiency_factor = 0.1
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

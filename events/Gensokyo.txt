@@ -1,0 +1,310 @@
+add_namespace = gsk
+
+
+country_event = {
+	id = gsk.1
+	title = gsk.1.t
+	desc = gsk.1.d
+	picture = GFX_report_event_election_vote
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	
+	option = {
+		name = gsk.1.a
+		set_politics = {
+	        ruling_party = fascism
+        }
+		add_popularity = {
+            ideology = fascism
+            popularity = 0.8
+        }
+		complete_national_focus = GSK_choose_fascism
+	}
+	option = {
+		name = gsk.1.b
+		set_politics = {
+	        ruling_party = communism
+        }
+		add_popularity = {
+            ideology = communism
+            popularity = 0.8
+        }
+		complete_national_focus = GSK_choose_communists
+	}
+	option = {
+		name = gsk.1.c
+		set_politics = {
+	        ruling_party = neutrality
+        }
+		add_popularity = {
+            ideology = neutrality
+            popularity = 0.8
+        }
+		complete_national_focus = GSK_choose_neutrality
+	}
+	option = {
+		name = gsk.1.e
+		add_popularity = {
+            ideology = democratic
+            popularity = 0.1
+        }
+	    add_stability = 0.05
+		complete_national_focus = GSK_choose_democrats
+	}
+}
+#SOV territories
+country_event = {
+	id = gsk.3
+	title = gsk.3.t
+	desc = gsk.3.d
+	picture = GFX_report_event_stalin_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = gsk.3.a
+		GSK = {
+		    transfer_state = 655
+	    }
+	}
+	option = {
+		name = gsk.3.b
+		ai_chance = { factor = 0 }
+		655 = {
+			owner = {
+				FROM = {
+					create_wargoal = {
+                        type = take_state_focus
+                        target = PREV
+						generator = { 655 }
+                        
+					}
+				}
+			}
+		}
+	}
+}
+#Join Allies
+country_event = {
+	id = gsk.4
+	title = gsk.4.t
+	desc = gsk.4.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	option = {
+		name = gsk.4.a
+		ENG = { add_to_faction = GSK }
+		GSK = {
+			add_ai_strategy = {
+				type = alliance
+				id = "ENG"
+				value = 200
+			}
+		}
+		hidden_effect = {
+			news_event = { hours = 6 id = news.180 }
+		}
+	}
+	option = {
+		name = gsk.4.b
+		ai_chance = { factor = 0 }
+		GSK = {
+			add_opinion_modifier = {
+				target = ENG
+				modifier = GSK_allies_refused
+			}
+		}
+	}
+}
+#JAP territories
+country_event = {
+	id = gsk.5
+	title = gsk.5.t
+	desc = gsk.5.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	option = {
+		name = gsk.5.a
+		GSK = {
+		    transfer_state = 533
+			transfer_state = 536
+			transfer_state = 537
+			transfer_state = 555
+	    }
+	}
+	option = {
+		name = gsk.5.b
+		ai_chance = { factor = 0 }
+		533 = {
+			owner = {
+				FROM = {
+					create_wargoal = {
+                        type = take_state_focus
+                        target = PREV
+						generator = { 533 }
+                        
+					}
+				}
+			}
+		}
+		536 = {
+			owner = {
+				FROM = {
+					create_wargoal = {
+                        type = take_state_focus
+                        target = PREV
+						generator = { 536 }
+                        
+					}
+				}
+			}
+		}
+		537 = {
+			owner = {
+				FROM = {
+					create_wargoal = {
+                        type = take_state_focus
+                        target = PREV
+						generator = { 537 }
+                        
+					}
+				}
+			}
+		}
+		555 = {
+			owner = {
+				FROM = {
+					create_wargoal = {
+                        type = take_state_focus
+                        target = PREV
+						generator = { 555 }
+                        
+					}
+				}
+			}
+		}
+	}
+}
+#Join Axis
+country_event = {
+	id = gsk.6
+	title = gsk.6.t
+	desc = gsk.6.d
+	picture = GFX_report_event_hitler_handshake
+
+	is_triggered_only = yes
+	
+	option = {
+		name = gsk.6.a
+		GER = { add_to_faction = GSK }
+		GSK = {
+			add_ai_strategy = {
+				type = alliance
+				id = "GER"
+				value = 200
+			}
+		}
+		hidden_effect = {
+			news_event = { hours = 6 id = news.180 }
+		}
+	}
+	option = {
+		name = gsk.6.b
+		ai_chance = { factor = 0 }
+		GSK = {
+			add_opinion_modifier = {
+				target = GER
+				modifier = GSK_allies_refused
+			}
+		}
+	}
+}
+#Tokyo attack
+country_event = {
+	id = gsk.7
+	title = gsk.7.t
+	desc = gsk.7.d
+	picture = GFX_report_event_japanese_soldiers_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = gsk.7.a
+		GSK = {
+			add_opinion_modifier = {
+				target = JAP
+				modifier = GSK_allies_refused
+			}
+		}
+		JAP = {
+			add_opinion_modifier = {
+				target = GSK
+				modifier = GSK_allies_refused
+			}
+		}
+		create_wargoal = {
+            type = annex_everything
+            target = FROM
+        }
+	}
+}
+#Tokyo attack
+country_event = {
+	id = gsk.8
+	title = gsk.8.t
+	desc = gsk.8.d
+	picture = GFX_report_event_japanese_soldiers_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = gsk.8.a
+		GSK = {
+		    transfer_state = 533
+			transfer_state = 536
+			transfer_state = 537
+			transfer_state = 555
+	    }
+	}
+}	
+#Join Comintern
+country_event = {
+	id = gsk.2
+	title = gsk.2.t
+	desc = gsk.2.d
+	picture = GFX_report_event_stalin_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = gsk.2.a
+		SOV = { add_to_faction = GSK }
+		GSK = {
+			add_ai_strategy = {
+				type = alliance
+				id = "SOV"
+				value = 200
+			}
+		}
+		hidden_effect = {
+			news_event = { hours = 6 id = news.180 }
+		}
+	}
+	option = {
+		name = gsk.2.b
+		ai_chance = { factor = 0 }
+		GSK = {
+			add_opinion_modifier = {
+				target = SOV
+				modifier = GSK_commintern refused
+			}
+		}
+	}
+}

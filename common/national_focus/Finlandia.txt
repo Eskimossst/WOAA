@@ -1,0 +1,119 @@
+focus_tree = {
+	id = fin_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = FIN 
+		}
+	}
+
+	default = no
+	
+	continuous_focus_position = { x = 1000 y = 1200 }
+	
+	focus = {
+		id = FIN_kingdom_of_the_north #Королевство севера 
+		icon = GFX_z_goal_generic_king_power
+		x = 10
+		y = 0
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus FIN_kingdom_of_the_north"
+			set_politics = {
+	         ruling_party = monarchy
+            }
+			set_party_name = { 
+            ideology = monarchy 
+            long_name = FIN_monarchy_party_eduscanta_long 
+            name = FIN_monarchy_party_eduscanta 
+            }
+			set_popularities = {
+	        neutrality = 10
+			monarchy = 40
+            }
+		}
+	}
+	
+	focus = {
+		id = FIN_internal_problem #Внутренняя проблема 
+		icon = GFX_goal_generic_national_unity
+		relative_position_id = FIN_kingdom_of_the_north
+		prerequisite = { focus = FIN_kingdom_of_the_north }
+		x = -1
+		y = 1
+		cost = 5
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus FIN_internal_problem"
+			add_ideas = FIN_a_divided_nation_2
+		}
+	}
+	
+	focus = {
+		id = FIN_external_problem #Внешняя проблема 
+		icon = GFX_goal_generic_intelligence_exchange
+		relative_position_id = FIN_kingdom_of_the_north
+		prerequisite = { focus = FIN_kingdom_of_the_north }
+		x = 1
+		y = 1
+		cost = 5
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus FIN_external_problem"
+			add_popularity = {
+                ideology = fascism
+                popularity = 0.10
+            }
+		}
+	}
+	
+	focus = {
+		id = FIN_make_a_decision #Принять решение 
+		icon = GFX_goal_generic_improve_relations
+		relative_position_id = FIN_external_problem
+		prerequisite = { focus = FIN_internal_problem focus = FIN_external_problem }
+		x = -1
+		y = 1
+		cost = 5
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus FIN_make_a_decision"
+			
+		}
+	}
+}

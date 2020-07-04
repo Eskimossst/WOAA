@@ -1,0 +1,406 @@
+ideas = {
+
+    country = {
+	    GSK_dome = { 
+            picture = dome 
+            removal_cost = -1 
+			allowed = { always = no }
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			modifier = {
+				trade_cost_for_target_factor = 1.0
+			}
+			rule = {
+				can_not_declare_war = yes
+            }
+        }
+		GSK_backward_country = { 
+            picture = book_with_knife 
+            removal_cost = -1 
+			allowed = { always = no }
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			modifier = {
+				production_speed_buildings_factor = -0.1
+	            research_speed_factor = -0.1
+			}
+        }
+		GSK_magic_country = { 
+            picture = magic 
+            removal_cost = -1 
+			allowed = { always = no }
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			modifier = {
+			   
+			}
+			rule = {
+                can_create_factions = yes
+            }
+        }
+		GSK_command_staff = { 
+            picture = generic_army_war_college 
+            removal_cost = -1 
+			allowed = { always = no }
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			research_bonus = {
+				land_doctrine = 0.05
+			}
+			
+			modifier = {
+			   
+			}
+        }
+		GSK_command_staff_1 = { 
+            picture = generic_army_war_college 
+            removal_cost = -1 
+			allowed = { always = no }
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			research_bonus = {
+				land_doctrine = 0.05
+			}
+			
+			modifier = {
+			    army_core_attack_factor = 0.05
+			}
+        }
+     	GSK_command_staff_2 = { 
+            picture = generic_army_war_college 
+            removal_cost = -1 
+			allowed = { always = no }
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			research_bonus = {
+				land_doctrine = 0.05
+			}
+			
+			modifier = {
+			    army_core_attack_factor = 0.05
+				defence = 0.05
+				production_speed_bunker_factor = 0.05
+			}
+        }
+		GSK_command_staff_3 = { 
+            picture = generic_army_war_college 
+            removal_cost = -1 
+			allowed = { always = no }
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			research_bonus = {
+				land_doctrine = 0.05
+			}
+			
+			modifier = {
+			    army_core_attack_factor = 0.05
+				defence = 0.05
+				production_speed_bunker_factor = 0.05
+				experience_gain_army_factor = 0.1
+			}
+        }
+		GSK_command_staff_4 = { 
+            picture = generic_army_war_college 
+            removal_cost = -1 
+			allowed = { always = no }
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			research_bonus = {
+				land_doctrine = 0.05
+			}
+			
+			modifier = {
+			    army_core_attack_factor = 0.05
+				defence = 0.05
+				production_speed_bunker_factor = 0.05
+				experience_gain_army_factor = 0.1
+				planning_speed = 0.05
+			}
+        }
+		GSK_command_staff_5 = { 
+            picture = generic_army_war_college 
+            removal_cost = -1 
+			allowed = { always = no }
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			research_bonus = {
+				land_doctrine = 0.05
+			}
+			
+			modifier = {
+			    army_core_attack_factor = 0.05
+				defence = 0.05
+				production_speed_bunker_factor = 0.05
+				experience_gain_army_factor = 0.1
+				planning_speed = 0.05
+				production_speed_dockyard_factor = 0.1
+			}
+        }
+		GSK_region_development = { 
+            picture = generic_goods_red_bonus 
+            removal_cost = -1 
+			allowed = { always = no }
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			research_bonus = {
+			}
+			
+			modifier = {
+			    production_speed_buildings_factor = 0.05
+			}
+        }
+	}
+	
+	political_advisor = {
+
+		reimu_hakure = {
+		
+			picture = reimu_hakurei
+			
+			allowed = {
+				original_tag = "GSK"
+			}
+		
+			traits = { first_lady_anime }
+		}
+
+		alice_margatroid = {
+
+			picture = alice_margatroid
+			
+			allowed = {
+				original_tag = "GSK"
+			}
+			
+			traits = { military_adviser_anime }
+		}
+
+		toko_mima = {
+
+			picture = toko_mima
+		
+			allowed = {
+				original_tag = "GSK"
+			}
+			
+			traits = { minister_of_economic_anime }
+		}
+
+	}
+	
+	theorist = {
+
+		GSK_muhammad_amin_bughra = {
+			ledger = army
+					
+			picture = generic_political_advisor_arab_2
+
+			allowed = {
+				original_tag = GSK
+			}
+			
+			research_bonus = {
+				land_doctrine = 0.10
+			}
+			
+			traits = { military_theorist }
+		}
+
+		GSK_renato_bardolucci = {
+			ledger = air
+					
+			picture = generic_army_europe_1
+				
+			allowed = {
+				original_tag = GSK
+			}
+			
+			research_bonus = {
+				air_doctrine = 0.10
+			}
+			
+			traits = { air_warfare_theorist }
+		}
+	}
+
+	high_command = {
+
+		GSK_mohammed_daoud_khan = {
+			ledger = army
+
+			picture = generic_political_advisor_arab_1
+			
+			allowed = {
+				original_tag = GSK
+			}
+			
+			traits = { army_armored_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		GSK_azam_ataullah = {
+			ledger = army
+
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = GSK
+			}
+			
+			traits = { army_infantry_3 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		GSK_aalem_daana = {
+			ledger = navy
+
+			picture = generic_navy_arab_3
+			
+			allowed = {
+				original_tag = GSK
+			}
+			
+			traits = { navy_screen_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		GSK_hares_muzafar = {
+			ledger = army
+
+			picture = generic_army_arab_3
+			
+			allowed = {
+				original_tag = GSK
+			}
+			
+			traits = { army_entrenchment_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	# MILITARY
+	army_chief = {
+
+		GSK_asadullah_seraj_khan = {
+			
+			picture = generic_army_arab_1
+			
+			allowed = {
+				original_tag = GSK
+			}
+			
+			traits = { army_chief_defensive_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		GSK_wazir_akbar_khan = {
+			
+			picture = generic_army_arab_3
+			
+			allowed = {
+				original_tag = GSK
+			}
+			
+			traits = { army_chief_morale_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+
+	air_chief = {
+		
+
+		GSK_ali_muhammed_khan = {
+			
+			picture = generic_air_arab_1
+			
+			allowed = {
+				original_tag = GSK
+			}
+			
+			traits = { air_chief_reform_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		GSK_gholam_wali = {
+			
+			picture = generic_air_arab_3
+			
+			allowed = {
+				original_tag = GSK
+			}
+			
+			traits = { air_chief_ground_support_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+	}
+
+	navy_chief = {
+
+		GSK_nasirullah_husain = {
+			
+			picture = generic_navy_arab_2
+			
+			allowed = {
+				original_tag = GSK
+			}
+			
+			traits = { navy_chief_decisive_battle_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		GSK_mohammed_etemadi_khan = {
+			
+			picture = generic_navy_arab_1
+			
+			allowed = {
+				original_tag = GSK
+			}
+			
+			traits = { navy_chief_naval_aviation_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+opinion_modifiers = {
+
+	#GSK
+	GSK_diplomacy_communists = { value = 60 }
+	GSK_commintern_refused  = { value = -50 }
+	GSK_diplomacy_comintern = { value = 20 }
+	GSK_diplomacy_democrats = { value = 60 }
+	GSK_allies_refused  = { value = -50 }
+	GSK_diplomacy_allies = { value = 20 }
+	GSK_diplomacy_fascism = { value = 60 }
+	GSK_axis_refused = { value = -50 }
+	GSK_staged_a_raid = { value = -50 }
+	
+}

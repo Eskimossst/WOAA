@@ -1,0 +1,191 @@
+capital = 532
+
+oob = "GSK_1936"
+
+set_research_slots = 3
+
+set_convoys = 50
+set_stability = 0.3
+set_war_support = 0.35
+set_fuel_ratio = 0.3
+
+
+
+add_ideas = {
+	GSK_dome
+	GSK_backward_country
+	GSK_magic_country
+}
+
+set_technology = {
+	infantry_weapons = 1
+	gwtank = 1
+	basic_light_tank = 1
+}
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = construction_effort_2
+	complete_national_focus = production_effort_2
+	complete_national_focus = infrastructure_effort
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	oob = "GSK_1939"
+	set_technology = {
+		early_fighter = 1
+		CAS1 = 1
+		gw_artillery = 1
+
+		#doctrines
+		air_superiority = 1
+		grand_battle_plan = 1
+		trench_warfare = 1
+		fleet_in_being = 1
+		battlefleet_concentration = 1
+		convoy_sailing = 1
+
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		radio_detection = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+}
+
+set_politics = {
+	ruling_party = democratic
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	neutrality = 10
+	fascism = 10
+	communism = 10
+	democratic = 70
+    monarchy = 0	
+}
+
+create_country_leader = {
+	name = "Yukari Yakumo"
+	desc = "POLITICS_JIGME_WANGCHUCK_DESC"
+	picture = "gfx/leaders/GSK/Yukari_Yakumo.dds"
+	expire = "1965.1.1"
+	ideology = conservatism
+	traits = {
+	   #
+	}
+}
+
+create_country_leader = {
+	name = "Byakuren Hiziri"
+	desc = "POLITICS_JIGME_WANGCHUCK_DESC"
+	picture = "gfx/leaders/GSK/Byakuren_Hiziri.dds"
+	expire = "1965.1.1"
+	ideology = authoritarian_democracy
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Miko Toyosatomimi"
+	desc = "POLITICS_JIGME_WANGCHUCK_DESC"
+	picture = "gfx/leaders/GSK/Miko_Toyosatomimi.dds"
+	expire = "1965.1.1"
+	ideology = leninism
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Kanako Yasaka"
+	desc = "POLITICS_JIGME_WANGCHUCK_DESC"
+	picture = "gfx/leaders/GSK/Kanako Yasaka.dds"
+	expire = "1965.1.1"
+	ideology = nazism
+	traits = {
+		#
+	}
+}
+
+1939.1.1 = {
+	set_politics = {
+		ruling_party = democratic
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+	set_popularities = {
+		fascism = 10
+		communism = 10
+		neutrality = 10
+		democratic = 70
+        monarchy = 0		
+	}
+}
+create_corps_commander = {
+	name = "Marisa Kirisame"
+	portrait_path = "gfx/leaders/GSK/Marisa_Kirisame.dds"
+	traits = { }
+	skill = 4
+	attack_skill = 4
+    defense_skill = 4
+    planning_skill = 3
+    logistics_skill = 3	
+}
+
+create_corps_commander = {
+	name = "Yuka Kazami"
+	portrait_path = "gfx/leaders/GSK/Yuka_Kazami.dds"
+	traits = { }
+	skill = 3
+	attack_skill = 3
+    defense_skill = 2
+    planning_skill = 3
+    logistics_skill = 3	
+}
+
+create_corps_commander = {
+	name = "Ran Yakumo"
+	portrait_path = "gfx/leaders/GSK/Ran_Yakumo.dds"
+	traits = { }
+	skill = 3
+	attack_skill = 2
+    defense_skill = 2
+    planning_skill = 3
+    logistics_skill = 3	
+}
+
+create_corps_commander = {
+	name = "Momizi Inubashiri"
+	portrait_path = "gfx/leaders/GSK/Momizi_Inubashiri.dds"
+	traits = { }
+	skill = 3
+	attack_skill = 3
+    defense_skill = 3
+    planning_skill = 3
+    logistics_skill = 3	
+}

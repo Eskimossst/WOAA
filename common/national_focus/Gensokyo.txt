@@ -1,0 +1,1558 @@
+focus_tree = {
+	id = gsk_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = GSK  
+		}
+	}
+
+	default = no
+	
+	continuous_focus_position = { x = 50 y = 1700 }
+	
+	focus = {
+		id = GSK_preparation_for_elections #Подготовка к выборам
+		icon = GFX_goal_generic_demand_territory
+		x = 8
+		y = 0
+		cost = 1
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_preparation_for_elections"
+			add_political_power = 100
+			GSK = { country_event = { id = gsk.1 days = 1 } }
+		}
+	}
+	
+	focus = {
+		id = GSK_choose_communists #Выбрать коммунистов
+		icon = GFX_goal_support_communism
+		prerequisite = { focus = GSK_preparation_for_elections }
+		relative_position_id = GSK_preparation_for_elections
+		mutually_exclusive = { focus = GSK_choose_democrats focus = GSK_choose_fascism focus = GSK_choose_neutrality }
+		x = -3
+		y = 1
+		cost = 0
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_choose_communists"
+			
+		}
+	}
+	
+	focus = {
+		id = GSK_choose_democrats #Выбрать демократов
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = GSK_preparation_for_elections }
+		relative_position_id = GSK_preparation_for_elections
+		mutually_exclusive = { focus = GSK_choose_communists focus = GSK_choose_fascism focus = GSK_choose_neutrality }
+		x = -1
+		y = 1
+		cost = 0
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_choose_democrats"
+			
+		}
+	}
+	
+	focus = {
+		id = GSK_choose_fascism #Выбрать фашистов
+		icon = GFX_goal_support_fascism
+		prerequisite = { focus = GSK_preparation_for_elections }
+		relative_position_id = GSK_preparation_for_elections
+		mutually_exclusive = { focus = GSK_choose_communists focus = GSK_choose_democrats focus = GSK_choose_neutrality }
+		x = 1
+		y = 1
+		cost = 0
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_choose_fascism"
+			
+		}
+	}
+	
+	focus = {
+		id = GSK_choose_neutrality #Выбрать нейтралитет
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = { focus = GSK_preparation_for_elections }
+		relative_position_id = GSK_preparation_for_elections
+		mutually_exclusive = { focus = GSK_choose_communists focus = GSK_choose_democrats focus = GSK_choose_fascism }
+		x = 3
+		y = 1
+		cost = 0
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_choose_neutrality"
+			
+		}
+	}
+	
+	focus = {
+		id = GSK_development_of_the_army #Развитие армии
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = GSK_choose_communists focus = GSK_choose_democrats focus = GSK_choose_fascism focus = GSK_choose_neutrality }
+		relative_position_id = GSK_preparation_for_elections
+		x = -2
+		y = 2
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_development_of_the_army"
+			add_ideas = GSK_command_staff
+		}
+	}
+	
+	focus = {
+		id = GSK_attack_development #Развитие атаки
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = GSK_development_of_the_army }
+		relative_position_id = GSK_development_of_the_army
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_attack_development"
+			swap_ideas = {
+                remove_idea = GSK_command_staff
+                add_idea = GSK_command_staff_1
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_protection_development #Развитие защиты
+		icon = GFX_goal_generic_defence
+		prerequisite = { focus = GSK_development_of_the_army }
+		relative_position_id = GSK_development_of_the_army
+		x = -2
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_protection_development"
+			swap_ideas = {
+                remove_idea = GSK_command_staff_1
+                add_idea = GSK_command_staff_2
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_militarization #Милитаризация
+		icon = GFX_focus_generic_manpower
+		prerequisite = { focus = GSK_attack_development }
+		relative_position_id = GSK_attack_development
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_militarization"
+			add_manpower = 5000
+		}
+	}
+	
+	focus = {
+		id = GSK_increase_the_speed_of_planning #Улучшение тактик
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = GSK_protection_development }
+		relative_position_id = GSK_protection_development
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_increase_the_speed_of_planning"
+			swap_ideas = {
+                remove_idea = GSK_command_staff_3
+                add_idea = GSK_command_staff_4
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_construction_of_bunkers #Строительство укреплений
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = GSK_increase_the_speed_of_planning }
+		relative_position_id = GSK_increase_the_speed_of_planning
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_construction_of_bunkers"
+			532 = {
+				add_building_construction = { type = bunker province = 10125 level = 2 instant_build = yes }
+				add_building_construction = { type = bunker province = 4172 level = 2 instant_build = yes }
+				add_building_construction = { type = bunker province = 7187 level = 2 instant_build = yes }
+				add_building_construction = { type = bunker province = 10100 level = 2 instant_build = yes }
+				add_building_construction = { type = bunker province = 12072 level = 2 instant_build = yes }
+				add_building_construction = { type = bunker province = 7157 level = 2 instant_build = yes }
+			}
+		}
+	}
+	
+	focus = {
+		id = GSK_experience_of_the_army #Улучшение тренировок
+		icon = GFX_focus_generic_military_academy
+		prerequisite = { focus = GSK_militarization }
+		relative_position_id = GSK_militarization
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_experience_of_the_army"
+			swap_ideas = {
+                remove_idea = GSK_command_staff_2
+                add_idea = GSK_command_staff_3
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_development_of_construction #Развития строительства
+		icon = GFX_goal_generic_construction
+		prerequisite = { focus = GSK_choose_communists focus = GSK_choose_democrats focus = GSK_choose_fascism focus = GSK_choose_neutrality }
+		relative_position_id = GSK_preparation_for_elections
+		x = 2
+		y = 2
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_development_of_construction"
+			add_ideas = GSK_region_development
+		}
+	}
+	
+	focus = {
+		id = GSK_construction_of_military_factories #Строительство военных заводов I
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = GSK_development_of_construction }
+		relative_position_id = GSK_development_of_construction
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_construction_of_military_factories"
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	
+	focus = {
+		id = GSK_construction_of_military_factories_1 #Строительство военных заводов II
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = GSK_construction_of_military_factories }
+		relative_position_id = GSK_construction_of_military_factories
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_construction_of_military_factories_1"
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	
+	focus = {
+		id = GSK_infrastructure_construction #Строительство инфраструктуры I
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = GSK_development_of_construction }
+		relative_position_id = GSK_development_of_construction
+		x = 2
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_infrastructure_construction"
+			add_building_construction = { 
+			    type = infrastructure
+				level = 1
+				instant_build = yes 
+			}
+		}
+	}
+	
+	focus = {
+		id = GSK_infrastructure_construction_1 #Строительство инфраструктуры II
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = GSK_infrastructure_construction }
+		relative_position_id = GSK_infrastructure_construction
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_infrastructure_construction"
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	
+	focus = {
+		id = GSK_construction_of_factory #Строительство фабрик I
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = GSK_development_of_construction }
+		relative_position_id = GSK_development_of_construction
+		x = 4
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_construction_of_factory"
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = { 
+			    type = industrial_complex
+				level = 1
+				instant_build = yes 
+			}
+		}
+	}
+	
+	focus = {
+		id = GSK_construction_of_factory_1 #Строительство фабрик II
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = GSK_construction_of_factory }
+		relative_position_id = GSK_construction_of_factory
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_construction_of_factory_1"
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = { 
+			    type = industrial_complex
+				level = 1
+				instant_build = yes 
+			}
+		}
+	}
+	
+	focus = {
+		id = GSK_improve_education #Улучшение образования
+		icon = GFX_focus_research
+		prerequisite = { focus = GSK_infrastructure_construction_1  focus = GSK_construction_of_factory_1  focus = GSK_construction_of_military_factories_1 }
+		relative_position_id = GSK_infrastructure_construction_1
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		available = {
+		    has_completed_focus = GSK_construction_of_factory_1
+			has_completed_focus = GSK_construction_of_military_factories_1
+			has_completed_focus = GSK_infrastructure_construction_1
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_improve_education"
+			add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = GSK_get_rid_of_the_dome #Избавиться от купола
+		icon = GFX_demand_dome
+		prerequisite = { focus = GSK_choose_communists focus = GSK_choose_democrats focus = GSK_choose_fascism focus = GSK_choose_neutrality }
+		relative_position_id = GSK_choose_democrats
+		x = 1
+		y = 5
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_get_rid_of_the_dome"
+			remove_ideas = GSK_dome
+		}
+	}
+	
+	focus = {
+		id = GSK_country_development #Развитие страны
+		icon = GFX_focus_generic_industry_2
+		prerequisite = { focus = GSK_improve_education }
+		relative_position_id = GSK_improve_education
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_country_development"
+			remove_ideas = GSK_backward_country
+			add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = GSK_start_the_diplomacy_communists #Поддержка Коммунистов
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = { focus = GSK_get_rid_of_the_dome }
+		relative_position_id = GSK_get_rid_of_the_dome
+		mutually_exclusive = { focus = GSK_their_way focus = GSK_start_the_diplomacy_democrats focus = GSK_start_the_diplomacy_fascism focus = GSK_start_the_diplomacy_neutrality }
+		x = -8
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_start_the_diplomacy_communists"
+			add_opinion_modifier = {
+				target = SOV
+				modifier = GSK_diplomacy_communists
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_to_join_the_comintern #Вступить в Коминтерн
+		icon = GFX_focus_generic_join_comintern
+		prerequisite = { focus = GSK_start_the_diplomacy_communists }
+		relative_position_id = GSK_start_the_diplomacy_communists
+		mutually_exclusive = { focus = GSK_sov_their_way }
+		x = -1
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		available = {
+	 		is_puppet = no
+	 		is_in_faction = no
+	 		OR = {
+	 			has_government = communism
+	 			communism > 0.4
+	 		}
+	 		has_war = no
+ 			SOV = {
+ 				exists = yes
+ 				has_government = communism
+ 				is_faction_leader = yes
+ 			}
+		}
+		
+		bypass = {
+	 		is_in_faction_with = SOV
+	 	}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_to_join_the_comintern"
+			SOV = { country_event = { id = gsk.2 days = 1 } }
+		}
+	}
+	
+	focus = {
+		id = GSK_sov_their_way #Cвой путь
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = GSK_start_the_diplomacy_communists }
+		relative_position_id = GSK_start_the_diplomacy_communists
+		mutually_exclusive = { focus = GSK_to_join_the_comintern }
+		x = 1
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_sov_their_way"
+			add_opinion_modifier = {
+				target = SOV
+				modifier = GSK_diplomacy_comintern 
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_ask_for_territories_from_the_ussr #Попросить территории у СССР
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = GSK_sov_their_way focus = GSK_to_join_the_comintern }
+		relative_position_id = GSK_start_the_diplomacy_communists
+		x = 0
+		y = 2
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_ask_for_territories_from_the_ussr"
+	        SOV = { country_event = { id = gsk.3 days = 1 } }
+		}
+	}
+	
+	focus = {
+		id = GSK_sov_war_with_japan #Война с Японией
+		icon = GFX_focus_attack_japan
+		prerequisite = { focus = GSK_ask_for_territories_from_the_ussr }
+		relative_position_id = GSK_ask_for_territories_from_the_ussr
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_war_with_japan"
+			declare_war_on = {
+                target = JAP
+                type = annex_everything
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_start_the_diplomacy_democrats #Поддержка Демократов
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = GSK_get_rid_of_the_dome }
+		relative_position_id = GSK_get_rid_of_the_dome
+		mutually_exclusive = { focus = GSK_start_the_diplomacy_communists focus = GSK_their_way focus = GSK_start_the_diplomacy_fascism focus = GSK_start_the_diplomacy_neutrality }
+		x = -3
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_start_the_diplomacy_democrats"
+			add_opinion_modifier = {
+				target = ENG
+				modifier = GSK_diplomacy_democrats
+            }
+            add_opinion_modifier = {
+				target = USA
+				modifier = GSK_diplomacy_democrats
+            }
+            add_opinion_modifier = {
+				target = FRA
+				modifier = GSK_diplomacy_democrats
+            }			
+		}
+	}
+	
+	focus = {
+		id = GSK_joining_the_allies #Вступление в союзники
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = GSK_start_the_diplomacy_democrats }
+		relative_position_id = GSK_start_the_diplomacy_democrats
+		mutually_exclusive = { focus = GSK_dem_their_way }
+		x = -2
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		available = {
+	 		is_puppet = no
+	 		is_in_faction = no
+	 		OR = {
+	 			has_government = democratic
+	 			democratic > 0.4
+	 		}
+	 		has_war = no
+ 			ENG = {
+ 				exists = yes
+ 				has_government = democratic
+ 				is_faction_leader = yes
+ 			}
+		}
+		
+		bypass = {
+	 		is_in_faction_with = ENG
+	 	}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_joining_the_allies"
+			ENG = { country_event = { id = gsk.4 days = 1 } }
+		}
+	}
+    
+	focus = {
+		id = GSK_dem_their_way #Cвой путь
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = GSK_start_the_diplomacy_democrats }
+		relative_position_id = GSK_start_the_diplomacy_democrats
+		mutually_exclusive = { focus = GSK_joining_the_allies }
+		x = 2
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_dem_their_way"
+			add_opinion_modifier = {
+				target = ENG
+				modifier = GSK_diplomacy_allies
+            }
+            add_opinion_modifier = {
+				target = USA
+				modifier = GSK_diplomacy_allies
+            }
+            add_opinion_modifier = {
+				target = FRA
+				modifier = GSK_diplomacy_allies
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_transfer_of_part_of_japan_territories #Передача части территорий Японии
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = GSK_joining_the_allies }
+		relative_position_id = GSK_joining_the_allies
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_transfer_of_part_of_japan_territories"
+			JAP = { country_event = { id = gsk.5 days = 1 } }
+		}
+	}
+	
+	focus = {
+		id = GSK_dem_join_the_war #Присоединиться к войне
+		icon = GFX_goal_generic_major_war
+		prerequisite = { focus = GSK_transfer_of_part_of_japan_territories }
+		relative_position_id = GSK_transfer_of_part_of_japan_territories
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_dem_join_the_war"
+			add_to_war = {
+                targeted_alliance = ENG
+                enemy = GER
+                hostility_reason = asked_to_join
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_getting_guarantees #Получение гарантий
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = GSK_dem_their_way }
+		relative_position_id = GSK_dem_their_way
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_getting_guarantees"
+			diplomatic_relation = {
+                country = ENG
+                relation = guarantee
+                active = yes
+            }
+			diplomatic_relation = {
+                country = FRA
+                relation = guarantee
+                active = yes
+            }
+			diplomatic_relation = {
+                country = USA
+                relation = guarantee
+                active = yes
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_dem_development_of_science #Развитие науки
+		icon = GFX_goal_generic_scientific_exchange
+		prerequisite = { focus = GSK_getting_guarantees }
+		relative_position_id = GSK_getting_guarantees
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_dem_development_of_science"
+			add_to_tech_sharing_group = commonwealth_research
+		}
+	}
+	
+	focus = {
+		id = GSK_start_the_diplomacy_fascism #Поддержка Фашистов
+		icon = GFX_goal_support_fascism
+		prerequisite = { focus = GSK_get_rid_of_the_dome }
+		relative_position_id = GSK_get_rid_of_the_dome
+		mutually_exclusive = { focus = GSK_start_the_diplomacy_communists focus = GSK_start_the_diplomacy_democrats focus = GSK_their_way focus = GSK_start_the_diplomacy_neutrality }
+		x = 3
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_start_the_diplomacy_fascism"
+			add_opinion_modifier = {
+				target = GER
+				modifier = GSK_diplomacy_fascism
+            }
+            add_opinion_modifier = {
+				target = JAP
+				modifier = GSK_diplomacy_fascism
+            }
+            add_opinion_modifier = {
+				target = ITA
+				modifier = GSK_diplomacy_fascism
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_joining_the_axis #Вступление в Ось
+		icon = GFX_focus_chi_mission_to_germany
+		prerequisite = { focus = GSK_start_the_diplomacy_fascism }
+		relative_position_id = GSK_start_the_diplomacy_fascism
+		mutually_exclusive = { focus = GSK_fas_their_way }
+		x = -2
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		available = {
+	 		is_puppet = no
+	 		is_in_faction = no
+	 		OR = {
+	 			has_government = fascism
+	 			fascism > 0.4
+	 		}
+	 		has_war = no
+ 			GER = {
+ 				exists = yes
+ 				has_government = fascism
+ 				is_faction_leader = yes
+ 			}
+		}
+		
+		bypass = {
+	 		is_in_faction_with = GER
+	 	}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_joining_the_axis"
+			GER = { country_event = { id = gsk.6 days = 1 } }
+		}
+	}
+	
+	focus = {
+		id = GSK_fas_their_way #Cвой путь
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = GSK_start_the_diplomacy_fascism }
+		relative_position_id = GSK_start_the_diplomacy_fascism
+		mutually_exclusive = { focus = GSK_joining_the_axis }
+		x = 2
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_fas_their_way"
+			
+		}
+	}
+	
+	focus = {
+		id = GSK_fas_transfer_of_part_of_japan_territories #Передача части территорий Японии
+		icon = GFX_focus_jap_pacific_guardian
+		prerequisite = { focus = GSK_fas_their_way focus = GSK_joining_the_axis }
+		relative_position_id = GSK_start_the_diplomacy_fascism
+		x = 0
+		y = 2
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_fas_transfer_of_part_of_japan_territories"
+			JAP = { country_event = { id = gsk.5 days = 1 } }
+		}
+	}
+	
+	focus = {
+		id = GSK_fas_join_the_war #Присоединиться к войне
+		icon = GFX_focus_attack_britain
+		prerequisite = { focus = GSK_joining_the_axis focus = GSK_fas_transfer_of_part_of_japan_territories }
+		relative_position_id = GSK_joining_the_axis
+		x = 0
+		y = 2
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_dem_join_the_war"
+			add_to_war = {
+                targeted_alliance = GER
+                enemy = ENG
+                hostility_reason = asked_to_join
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_fas_ask_for_territories_from_the_ussr #Передачи территории у СССР
+		icon = GFX_goal_generic_military_deal
+		prerequisite = { focus = GSK_fas_their_way focus = GSK_fas_transfer_of_part_of_japan_territories }
+		relative_position_id = GSK_fas_their_way
+		x = 0
+		y = 2
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_fas_ask_for_territories_from_the_ussr"
+	        SOV = { country_event = { id = gsk.3 days = 1 } }
+		}
+	}
+	
+	focus = {
+		id = GSK_start_the_diplomacy_neutrality #Поддержка Нейтралитета
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = GSK_get_rid_of_the_dome }
+		relative_position_id = GSK_get_rid_of_the_dome
+		mutually_exclusive = { focus = GSK_start_the_diplomacy_communists focus = GSK_start_the_diplomacy_democrats focus = GSK_start_the_diplomacy_fascism focus = GSK_their_way }
+		x = 9
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_start_the_diplomacy_neutrality"
+			add_stability = 0.05
+		}
+	} 
+	
+	focus = {
+		id = GSK_neu_getting_guarantees #Получение гарантий
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = GSK_start_the_diplomacy_neutrality }
+		relative_position_id = GSK_start_the_diplomacy_neutrality
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_neu_getting_guarantees"
+			diplomatic_relation = {
+                country = ENG
+                relation = guarantee
+                active = yes
+            }
+			diplomatic_relation = {
+                country = FRA
+                relation = guarantee
+                active = yes
+            }
+			diplomatic_relation = {
+                country = USA
+                relation = guarantee
+                active = yes
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_industrial_development #Развитие промышленности
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = GSK_neu_getting_guarantees }
+		relative_position_id = GSK_neu_getting_guarantees
+		x = 2
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_industrial_development"
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = { 
+			    type = industrial_complex
+				level = 1
+				instant_build = yes 
+			}
+		}
+	}
+	
+	focus = {
+		id = GSK_development_of_the_military_industry #Развитие военной промышленности
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = GSK_neu_getting_guarantees }
+		relative_position_id = GSK_neu_getting_guarantees
+		x = -2
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_development_of_the_military_industry"
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = { 
+			    type = arms_factory
+				level = 1
+				instant_build = yes 
+			}
+		}
+	}
+	
+	focus = {
+		id = GSK_fleet_development #Развитие флота
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = GSK_development_of_the_military_industry }
+		relative_position_id = GSK_development_of_the_military_industry
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_fleet_development"
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = { 
+			    type = dockyard
+				level = 1
+				instant_build = yes 
+			}
+		}
+	}
+	
+	focus = {
+		id = GSK_infrastructure_development #Развитие инфраструктуры 
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = GSK_industrial_development }
+		relative_position_id = GSK_industrial_development
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_infrastructure_development"
+			add_building_construction = { 
+			    type = infrastructure
+				level = 1
+				instant_build = yes 
+			}
+		}
+	}
+	
+	focus = {
+		id = GSK_their_way #Cвой путь
+		icon = GFX_focus_generic_treaty
+		prerequisite = { focus = GSK_get_rid_of_the_dome }
+		relative_position_id = GSK_get_rid_of_the_dome
+		mutually_exclusive = { focus = GSK_start_the_diplomacy_communists focus = GSK_start_the_diplomacy_democrats focus = GSK_start_the_diplomacy_fascism focus = GSK_start_the_diplomacy_neutrality }
+		x = 15
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_their_way"
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+	
+	focus = {
+		id = GSK_alliance_with_japan #Союз с Японией
+		icon = GFX_focus_chi_collaboration_with_the_japanese
+		prerequisite = { focus = GSK_their_way }
+		relative_position_id = GSK_their_way
+		mutually_exclusive = { focus = GSK_raid_on_tokyo }
+		x = -2
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_alliance_with_japan"
+			
+		}
+	}
+	
+	focus = {
+		id = GSK_raid_on_tokyo #Налет на Токио
+		icon = GFX_focus_AST_war_japan
+		prerequisite = { focus = GSK_their_way }
+		relative_position_id = GSK_their_way
+		mutually_exclusive = { focus = GSK_alliance_with_japan }
+		x = 2
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_raid_on_tokyo"
+			add_manpower = -100
+			random_list = {
+                1 = {
+                    GSK = { country_event = { id = gsk.7 days = 1 } }
+                }
+                3 = {
+                    GSK = { country_event = { id = gsk.8 days = 1 } }
+                }
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_transfer_of_part_of_the_territory_of_japan #Передача части территории Японии
+		icon = GFX_focus_generic_diplomatic_treaty
+		prerequisite = { focus = GSK_alliance_with_japan }
+		relative_position_id = GSK_alliance_with_japan
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_transfer_of_part_of_the_territory_of_japan"
+			JAP = { country_event = { id = gsk.5 days = 1 } }
+		}
+	}
+	
+	focus = {
+		id = GSK_introduction_the_war #Вступить в войну
+		icon = GFX_goal_generic_major_war
+		prerequisite = { focus = GSK_transfer_of_part_of_the_territory_of_japan }
+		relative_position_id = GSK_transfer_of_part_of_the_territory_of_japan
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_introduction_the_war"
+			add_to_war = {
+                targeted_alliance = JAP
+                enemy = CHI
+                hostility_reason = asked_to_join
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_conscription #Призыв в армию
+		icon = GFX_focus_generic_manpower
+		prerequisite = { focus = GSK_raid_on_tokyo }
+		relative_position_id = GSK_raid_on_tokyo
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_conscription"
+			add_manpower = 2500
+		}
+	}
+	
+	focus = {
+		id = GSK_war_with_japan #Война с Японией
+		icon = GFX_focus_attack_japan
+		prerequisite = { focus = GSK_conscription }
+		relative_position_id = GSK_conscription
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_war_with_japan"
+			declare_war_on = {
+                target = JAP
+                type = annex_everything
+            }
+		}
+	}
+	
+	focus = {
+		id = GSK_fleet_development_1 #Развитие флота
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 17
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		available = {
+			has_completed_focus = GSK_get_rid_of_the_dome
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_fleet_development_1"
+			add_building_construction = { 
+			    type = dockyard
+				level = 1
+				instant_build = yes 
+			}
+			add_extra_state_shared_building_slots = 1
+		}
+	}
+	
+	focus = {
+		id = GSK_fleet_development_2 #Развитие флота
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = GSK_fleet_development_1 }
+		relative_position_id = GSK_fleet_development_1
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_fleet_development_2"
+			add_building_construction = { 
+			    type = dockyard
+				level = 1
+				instant_build = yes 
+			}
+			add_extra_state_shared_building_slots = 1
+		}
+	}
+	
+	focus = {
+		id = GSK_improving_shipyards #Улучшение верфей
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = GSK_fleet_development_2 }
+		relative_position_id = GSK_fleet_development_2
+		x = 0
+		y = 1
+		cost = 10
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName] ([Root.GetTag]): Focus GSK_improving_shipyards"
+		    swap_ideas = {
+                remove_idea = GSK_command_staff_4
+                add_idea = GSK_command_staff_5
+            }
+		}
+	}
+}
